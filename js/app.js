@@ -1,7 +1,7 @@
 
 
 //establish console log points, to check work.  this enables/disables the console log requests.
-var checkYourWork = true;
+var checkYourWork = false;
 
 
 //hours array (placeholders: 6=0, 1am = 19)
@@ -67,17 +67,67 @@ function Store (storeName, address, phone, openTime, closeTime, days, pizzaSales
     this.deliveryMinMax=    function (){
                               this.deliveriesCalculated = [];
                               for (i=0; i < this.deliveryRawData.length ; i++){
-
-                                if( minMax(this.deliveryRawData[i][0], this.deliveryRawData[i][1]) < this.pizzaSalesCalculated[i])   {
-                                         this.deliveriesCalculated.push(minMax(this.deliveryRawData[i][0], this.deliveryRawData[i][1]))
-                                       }  else {this.pizzaSalesCalculated[i]};
+                                    if(minMax(this.pizzaSalesRawData[i][0], this.pizzaSalesRawData[i][1])===0){
+                                      this.deliveriesCalculated.push(0);   //this is not working!
+                                    }   else if(minMax(this.deliveryRawData[i][0], this.deliveryRawData[i][1]) < minMax(this.pizzaSalesRawData[i][0], this.pizzaSalesRawData[i][1]))
+                                     { this.deliveriesCalculated.push( minMax(this.deliveryRawData[i][0], this.deliveryRawData[i][1]));                                                         }  else {this.deliveriesCalculated.push(minMax(this.pizzaSalesRawData[i][0], this.pizzaSalesRawData[i][1]))};
                                      }
                                 };
-    this.deliveryMinMax();
-    this.deliverySalesSumTotal = this.deliveriesCalculated.reduce(function(a,b){
-                                return a+b;
-                              });
+
+    //this.deliverySalesSumTotal = this.deliveriesCalculated.reduce(function(a,b){
+                              //   return a+b;
+                              // });
+
+    this.tableGen = function (){
+                        var putTableHere = document.getElementById("putSummaryTableHere");
+                        var tbl = document.createElement("table");   //create table
+                        var tblBody = document.createElement("tbody");
+                        for (var i=0; i<hoursArrayStore.length; i++) {    //NOTE: NEED TO UPDATE THIS FOR MORE DYNAMIC ARRAY LENGTH...
+                        var row = document.createElement("tr");  //creates table row
+
+                        //create rows for time slots
+                        //NOTE: STILL NEED TO WORK OUT KINKS FOR MIDNIGHT CROSSOVER...
+
+                            var cellTimeslots = document.createElement("td");
+                            var cellTextTimeslots = document.createTextNode(hoursArrayStore[i]);
+                            cellTimeslots.appendChild(cellTextTimeslots);
+                            row.appendChild(cellTimeslots);
+
+                        //create rows for pizza sales
+                            var cellPizzas = document.createElement("td");
+                            var runPizzaSalesFunction = this.pizzaSalesMinMax();
+                            var pizzaData = this.pizzaSalesCalculated[i];
+                            var cellTextPizzas = document.createTextNode(pizzaData);  //puts pizza sales into text Node
+                            cellPizzas.appendChild(cellTextPizzas);
+                            row.appendChild(cellPizzas);
+
+                            //create rows for # of deliveries
+                                var cellDeliveries = document.createElement("td");
+                                var runDeliveriesFunction = this.deliveryMinMax();
+                                var deliveryData = this.deliveriesCalculated[i];
+                                var cellTextDeliveries = document.createTextNode(deliveryData);
+                                cellDeliveries.appendChild(cellTextDeliveries);
+                                row.appendChild(cellDeliveries);
+
+                            tblBody.appendChild(row);
+                                }  //end for loop
+                            tbl.appendChild(tblBody);
+
+                            if(putTableHere){
+                            putTableHere.appendChild(tbl);
+                            }
+
+                            tbl.setAttribute("border","2");
+                            }
+
+
 }
+
+
+
+
+
+
 
 
 //##############################################################################################################################################
@@ -86,6 +136,18 @@ function Store (storeName, address, phone, openTime, closeTime, days, pizzaSales
 
 var beaverton = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
+var hillsboro = new Store("Hillsboro", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[1,3],[1,3],[1,3],[5,9],[5,9],[5,9],[2,13],[2,13],[2,13],[18,32],[18,32],[18,32],[1,3],[1,3],[1,3],[8,20],[8,20],[8,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+
+var downtown = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+
+var northeast = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+
+var clackamas = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+
+var airport = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+
+
+//HERE ARE SOME CHECKS
 if(checkYourWork){
 console.log(beaverton.pizzaSalesRawData);
 console.log(beaverton.pizzaSalesSumTotal);
@@ -93,49 +155,29 @@ console.log(beaverton.deliverySalesSumTotal);
 
 };
 
+beaverton.pizzaSalesMinMax();
+beaverton.tableGen();
+
+
 //###############################################################################################
 
-STORE LOCATIONS AND hours
+//STORE LOCATIONS AND hours
 
 
-for (i=0; i < stores.length; i++){
-
-  var storeContact = document.getElementById("store"+i);
-
-  if(storeContact){       //need if statement for other web pages that do not have this element Id.
-  storeContact.textContent=stores[i].storeName+" \r "+stores[i].location+" \r "+stores[i].phone+" \r "+stores[i].storeHours+", "+stores[i].days;
-}
-}
+// for (i=0; i < stores.length; i++){
+//
+//   var storeContact = document.getElementById("store"+i);
+//
+//   if(storeContact){       //need if statement for other web pages that do not have this element Id.
+//   storeContact.textContent=stores[i].storeName+" \r "+stores[i].location+" \r "+stores[i].phone+" \r "+stores[i].storeHours+", "+stores[i].days;
+// }
+// }
 //ok, so that kind of worked :)  Still need to format and find out how to add carriage returns & list open time and close time separately wih a "-"
 
 //
 // //##################################################################################################
 //
-// //total number of pizzas sold (pizza Odysseys)
-// //hmmmm, what's this reduce thing I'm reading about...let's see if it works....
-//
-// var totalOdysseysSetup = []  //establish array for summing using reduce
-//
-// //functioin to loop through pizza sales using min/max, loops through all array items in pizzaSales for each store. store loop defined below.
-//   function calculateTotal (something) {
-//   for (i=0; i < stores[j].pizzaSales.length ; i++) {
-//       totalOdysseysSetup.push(minMax(stores[j].pizzaSales[i][0], stores[j].pizzaSales[i][1]));
-//   }
-// }
-//
-// //loop through all stores.
-//   for (j=0; j < stores.length ; j++){
-//           calculateTotal(stores[j]);
-//   }
-//
-// //here's the reduce to add all items in the array
-// var totalOdysseysSum = totalOdysseysSetup.reduce(function(a,b){
-//     return a+b;
-//   });
-//
-//   console.log(totalOdysseysSetup);
-//   console.log(totalOdysseysSum);  //whoa...it worked!
-//
+
 // //final push to webpage
 //
 // var totalOdesseyPush = document.getElementById("happyOdysseys");
@@ -157,12 +199,12 @@ function minMax (min, max) {
 //
 // // //############################################################################
 //
-// //CREATE TABLE
+//CREATE TABLE(S)
+
+
+// function generate_table(storeName){
 //
-//
-// function generate_table(obj){
-//
-// var putTableHere = document.getElementById("putTableHere");
+// var putTableHere = document.getElementById("putSummaryTableHere");
 // var tbl = document.createElement("table");   //create table
 // var tblBody = document.createElement("tbody");  //create body of table
 //
@@ -171,7 +213,7 @@ function minMax (min, max) {
 // var headerRow = document.createElement("tr");  //creates table row for heder
 //
 // var tblheader = document.createElement("TH");
-// var headerText = document.createTextNode(stores[j].storeName);
+// var headerText = document.createTextNode("SUMMARY ALL STORES");   //stores[j].storeName NOTE: NEED TO ADD LOOP HERE POSSIBLY..THINK IT THROUGH...
 // tblheader.appendChild(headerText);
 // headerRow.appendChild(tblheader);
 // tblBody.appendChild(headerRow);
@@ -210,7 +252,7 @@ function minMax (min, max) {
 //
 //
 // //start of hourly store table creation
-// for (var i=0; i<hoursArrayStore.length; i++) {
+// for (var i=0; i<hoursArrayStore.length; i++) {    //NOTE: NEED TO UPDATE THIS FOR MORE DYNAMIC ARRAY LENGTH...
 //
 // var row = document.createElement("tr");  //creates table row
 //
@@ -226,31 +268,28 @@ function minMax (min, max) {
 // //create rows for pizza sales
 //
 //     var cellPizzas = document.createElement("td");
-//     var pizzaData = minMax(stores[j].pizzaSales[i][0], stores[j].pizzaSales[i][1]); //determines random number based on pizzaSales array.
-//     var cellTextPizzas = document.createTextNode(pizzaData);  //puts random number into text node for table.
+//     var runPizzaSalesFunction = storeName.pizzaSalesMinMax();
+//     var pizzaData = storeName.pizzaSalesCalculated[i];
+//     var cellTextPizzas = document.createTextNode(pizzaData);  //puts pizza sales into text Node
 //     cellPizzas.appendChild(cellTextPizzas);
 //     row.appendChild(cellPizzas);
 //
 // //create rows for # of deliveries
 //     var cellDeliveries = document.createElement("td");
-//     var deliveryData;
-//         if ( minMax(stores[j].delivery[i][0], stores[j].delivery[i][1]) > pizzaData ){
-//                 deliveryData = pizzaData;
-//             } else {
-//                 deliveryData = minMax(stores[j].delivery[i][0], stores[j].delivery[i][1])
-//             }
+//     var runDeliveriesFunction = storeName.deliveryMinMax();
+//     var deliveryData = storeName.deliveriesCalculated[i];
 //     var cellTextDeliveries = document.createTextNode(deliveryData);
 //     cellDeliveries.appendChild(cellTextDeliveries);
 //     row.appendChild(cellDeliveries);
 //
-// //create rows for drivers needed
-//     var cellDrivers = document.createElement("td");
-//     var driverData = Math.ceil(deliveryData/3);
-//     var cellTextDrivers = document.createTextNode(driverData);
-//     cellDrivers.appendChild(cellTextDrivers);
-//     row.appendChild(cellDrivers);
-//
-//
+// // // //create rows for drivers needed
+// // //     var cellDrivers = document.createElement("td");
+// // //     var driverData = Math.ceil(deliveryData/3);
+// // //     var cellTextDrivers = document.createTextNode(driverData);
+// // //     cellDrivers.appendChild(cellTextDrivers);
+// // //     row.appendChild(cellDrivers);
+// //
+// //
 // tblBody.appendChild(row);
 //
 // }
@@ -264,13 +303,14 @@ function minMax (min, max) {
 // tbl.setAttribute("border","2");
 // }
 //
-//
-//
-// //function to loop through store objects and build table for each
-// function makeAllTables(stores){
-//       for ( j= 0 ; j < stores.length ; j++){
-//         generate_table(stores[j]);
-//     }
-//       }
-//
-// makeAllTables(stores);
+// //
+// //
+// // //function to loop through store objects and build table for each
+// // //function makeAllTables(beaverton);
+// // // {
+// // //       for ( j= 0 ; j < beaverton.length ; j++){
+//          generate_table(beaverton);
+// // //     }
+// // //       }
+// //
+// // //makeAllTables(stores);
