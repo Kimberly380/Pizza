@@ -101,10 +101,13 @@ var stores = [ {
 
 
 for (i=0; i < stores.length; i++){
-  var storeContact = document.getElementById("store"+i);
-  storeContact.textContent=stores[i].storeName+" \n "+stores[i].location+" \r "+stores[i].phone+" \r "+stores[i].storeHours+", "+stores[i].days
-}
 
+  var storeContact = document.getElementById("store"+i);
+
+  if(storeContact){       //need if statement for other web pages that do not have this element Id.
+  storeContact.textContent=stores[i].storeName+" \r "+stores[i].location+" \r "+stores[i].phone+" \r "+stores[i].storeHours+", "+stores[i].days;
+}
+}
 //ok, so that kind of worked :)  Still need to format and find out how to add carriage returns & list open time and close time separately wih a "-"
 
 
@@ -138,8 +141,10 @@ var totalOdysseysSum = totalOdysseysSetup.reduce(function(a,b){
 //final push to webpage
 
 var totalOdesseyPush = document.getElementById("happyOdysseys");
-totalOdesseyPush.textContent = totalOdysseysSum + " happy Pizza Odysseys this week!";  //would like to number format this...
 
+if(totalOdesseyPush){                        //need if statement so this will not affect other pages that do not have this reference.
+totalOdesseyPush.textContent = totalOdysseysSum + " happy Pizza Odysseys this week!";  //would like to number format this...
+}
 
 //###################################################################################################
 
