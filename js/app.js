@@ -50,7 +50,7 @@ var stores = [ {
     delivery: [[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]],
   },
    {
-      storeName: "Beaverton",
+      storeName: "Hillsboro",
       location: "put fake address here",
       phone: "555-555-5555",
       storeHours: storeHours(8,1),
@@ -59,7 +59,7 @@ var stores = [ {
       delivery: [[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]],
     },
     {
-      storeName: "Beaverton",
+      storeName: "Downtown",
       location: "put fake address here",
       phone: "555-555-5555",
       storeHours: storeHours(8,1),
@@ -68,7 +68,7 @@ var stores = [ {
       delivery: [[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]],
     },
     {
-      storeName: "Beaverton",
+      storeName: "NorthEast",
       location: "put fake address here",
       phone: "555-555-5555",
       storeHours: storeHours(8,1),
@@ -77,7 +77,7 @@ var stores = [ {
       delivery: [[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]],
     },
       {
-      storeName: "Beaverton",
+      storeName: "Clackamas",
       location: "put fake address here",
       phone: "555-555-5555",
       storeHours: storeHours(8,1),
@@ -85,7 +85,7 @@ var stores = [ {
       pizzaSales: [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],  //figure out how to leave at original summarized amount (every three hours...)
       delivery: [[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]],
     },
-  { storeName: "Hillsboro",
+  { storeName: "PDX-airport",
     location: "put fake address here",
     phone: "555-555-5555",
     storeHours: storeHours(8,1),
@@ -95,11 +95,53 @@ var stores = [ {
   }
 
 ];
+//###############################################################################################
+
+//STORE LOCATIONS AND hours
 
 
-//#########################################################################################
+for (i=0; i < stores.length; i++){
+  var storeContact = document.getElementById("store"+i);
+  storeContact.textContent=stores[i].storeName+" \n "+stores[i].location+" \r "+stores[i].phone+" \r "+stores[i].storeHours+", "+stores[i].days
+}
 
-//CREATE DATA
+//ok, so that kind of worked :)  Still need to format and find out how to add carriage returns & list open time and close time separately wih a "-"
+
+
+//##################################################################################################
+
+//total number of pizzas sold (pizza Odysseys)
+//hmmmm, what's this reduce thing I'm reading about...let's see if it works....
+
+var totalOdysseysSetup = []  //establish array for summing using reduce
+
+//functioin to loop through pizza sales using min/max, loops through all array items in pizzaSales for each store. store loop defined below.
+  function calculateTotal (something) {
+  for (i=0; i < stores[j].pizzaSales.length ; i++) {
+      totalOdysseysSetup.push(minMax(stores[j].pizzaSales[i][0], stores[j].pizzaSales[i][1]));
+  }
+}
+
+//loop through all stores.
+  for (j=0; j < stores.length ; j++){
+          calculateTotal(stores[j]);
+  }
+
+//here's the reduce to add all items in the array
+var totalOdysseysSum = totalOdysseysSetup.reduce(function(a,b){
+    return a+b;
+  });
+
+  console.log(totalOdysseysSetup);
+  console.log(totalOdysseysSum);  //whoa...it worked!
+
+//final push to webpage
+
+var totalOdesseyPush = document.getElementById("happyOdysseys");
+totalOdesseyPush.textContent = totalOdysseysSum + " happy Pizza Odysseys this week!";  //would like to number format this...
+
+
+//###################################################################################################
 
 
 //min max function
@@ -109,6 +151,8 @@ function minMax (min, max) {
 
 
 // //############################################################################
+
+//CREATE TABLE
 
 
 function generate_table(obj){
@@ -138,8 +182,26 @@ tblheader.appendChild(headerText);
 headerRow.appendChild(tblheader);
 tblBody.appendChild(headerRow);
 
+//column two header
+var tblheader = document.createElement("TH");
+var headerText = document.createTextNode("Pizzas Sold");
+tblheader.appendChild(headerText);
+headerRow.appendChild(tblheader);
+tblBody.appendChild(headerRow);
 
+//column three header
+var tblheader = document.createElement("TH");
+var headerText = document.createTextNode("Deliveries");
+tblheader.appendChild(headerText);
+headerRow.appendChild(tblheader);
+tblBody.appendChild(headerRow);
 
+//column four header
+var tblheader = document.createElement("TH");
+var headerText = document.createTextNode("Drivers Needed");
+tblheader.appendChild(headerText);
+headerRow.appendChild(tblheader);
+tblBody.appendChild(headerRow);
 
 
 //start of hourly store table creation
@@ -203,18 +265,7 @@ tbl.setAttribute("border","2");
 function makeAllTables(stores){
       for ( j= 0 ; j < stores.length ; j++){
         generate_table(stores[j]);
-
     }
-
       }
 
 makeAllTables(stores);
-
-
-
-// function printAllTimes(arr){
-//     for (j = 0 ; j < stores[0].hoursArray.length ; i++){
-//         return (stores[0].hoursArray[i]);
-//     }
-//
-// }
