@@ -45,11 +45,13 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
     this.storeName = storeName;
     this.address = address;
     this.phone = phone;
-    this.storeHours = function (openTime,closeTime){
-          var open = timeArray[openTime];
-          var closed = timeArray[closeTime];
-          return [open,closed];
-        };
+    this.storeHours = hoursArrayStore[0] + "-" + hoursArrayStore[17];
+
+    // function (openTime,closeTime){
+    //       var open = timeArray[openTime];
+    //       var closed = timeArray[closeTime];
+    //       return [open,closed];
+    //     };
     this.days = days;
     this.pData = pData;
     this.pSum = 0
@@ -196,13 +198,13 @@ var beaverton = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Op
 
 var hillsboro = new Store("Hillsboro", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[1,3],[1,3],[1,3],[5,9],[5,9],[5,9],[2,13],[2,13],[2,13],[18,32],[18,32],[18,32],[1,3],[1,3],[1,3],[8,20],[8,20],[8,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
-var downtown = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+var downtown = new Store("downtown", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
-var northeast = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+var northeast = new Store("northeast", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
-var clackamas = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+var clackamas = new Store("clackamas", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
-var airport = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+var airport = new Store("airport", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
 
 //###############################################################################################################################################/
@@ -263,18 +265,37 @@ pSumByHour();
 //STORE LOCATIONS AND hours
 
 
-// for (i=0; i < stores.length; i++){
-//
-//   var storeContact = document.getElementById("store"+i);
-//
-//   if(storeContact){       //need if statement for other web pages that do not have this element Id.
-//   storeContact.textContent=stores[i].storeName+" \r "+stores[i].location+" \r "+stores[i].phone+" \r "+stores[i].storeHours+", "+stores[i].days;
-// }
-// }
+for (i=0; i < storeObjects.length; i++){
+
+  var storeContact = document.getElementById("store"+i);
+
+  if(storeContact){       //need if statement for other web pages that do not have this element Id.
+  storeContact.textContent=storeObjects[i].storeName+" \r "+storeObjects[i].address+" \r "+storeObjects[i].phone+" \r "+storeObjects[i].storeHours+", "+storeObjects[i].days;
+}
+}
 //ok, so that kind of worked :)  Still need to format and find out how to add carriage returns & list open time and close time separately wih a "-"
 
-//
-// //##################################################################################################
+
+//##################################################################################################
+
+//print out weekly totals
+
+
+
+function weeklyTotals () {
+    printWeekTotal = document.getElementById("weeklyTotals");
+      for (z = 0 ; z < storeObjects.length; z++){
+            var lineItem = document.createElement("p");
+            var lineItemText = document.createTextNode(storeObjects[z].storeName + " had sales of " + storeObjects[z].pSum + " last week.");
+            lineItem.appendChild(lineItemText);
+            printWeekTotal.appendChild(lineItem);
+      }
+}
+
+weeklyTotals();
+
+
+//#################################################################################################
 //
 
 // //final push to webpage
