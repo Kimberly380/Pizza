@@ -171,8 +171,6 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
 
                     tbl.appendChild(tblBody);
 
-
-
                     if(putTableHere){
                     putTableHere.appendChild(tbl);
                         var br = document.createElement("br");
@@ -240,11 +238,21 @@ function makeAllTables(){
 makeAllTables();
 
 //###############################################################################################
-//Sum by hour
+//Sum by hour in total table
 
 
-
-
+// function pSumByHour(stores){
+//     var totalArray = [];
+//     m=0;
+//     for (k = 0; k < stores[m].pCalc.length ; k++){
+//           for (m=0;  m < stores.length; m++){
+//               totalArray[k] += stores[m].pCalc[k];
+//           }
+//       }
+//     console.log(totalArray);
+// }
+//
+// pSumByHour(storeObjects);
 
 
 //###############################################################################################
@@ -275,13 +283,9 @@ makeAllTables();
 // }
 //
 // //###################################################################################################
-//
-//
+
 // //min max function
 
 function minMax (min, max) {
-       return Math.round(Math.random() * (max-min))+ min;
-             }
-//
-//
-//
+    return Math.round(Math.random() * (max-min))+ min;
+}
