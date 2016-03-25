@@ -17,17 +17,17 @@
 // //   console.log(hoursList(2,19));
 // //
 //
-// //establish array for time selection
-//   var timeArray=[];
-//   var openHours=[];
-//     for (i=0; i <25 ; i++){
-//         if (i >12) {
-//           timeArray.push((i-12) +":00pm");
-//         }else {
-//           timeArray.push(i+":00am");
-//           }
-//         }
-//
+//establish array for time selection
+  var timeArray=[];
+  var openHours=[];
+    for (i=0; i <25 ; i++){
+        if (i >12) {
+          timeArray.push((i-12) +":00pm");
+        }else {
+          timeArray.push(i+":00am");
+          }
+        }
+
 //
 // //establish global variables
 //
@@ -52,7 +52,7 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
     this.days = days;
     this.pData = pData;
     this.pCalc = [];
-    this.pMinMax = function (){ for (i=0; i < this.pData.length ; i++){
+    this.pMinMax = function (){ for (var i=0; i < this.pData.length ; i++){
                                     this.pCalc.push(minMax(this.pData[i][0], this.pData[i][1]));
                                       }
                                 };
@@ -61,7 +61,7 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
     this.dCalc = [];
     this.dminMax=    function (){
                               this.dCalc = [];
-                              for (i=0; i < this.dData.length ; i++){
+                              for (var i=0; i < this.dData.length ; i++){
                                     var minMaxCalc = minMax(this.dData[i][0], this.dData[i][1]);
                                       if(this.pCalc[i]===0){
                                       this.dCalc.push(0);
@@ -83,22 +83,20 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
                       //***************START HEADER*************************************
 
 
-
-
-
-                        var footer = document.createElement("tr");
-                        function createHeader (textForHeader){
+                          function createHeader (textForHeader){
                           var tblheader = document.createElement("th");
                           var headerText = document.createTextNode(textForHeader);
                           tblheader.appendChild(headerText);
                           headerRow.appendChild(tblheader);
-                          tblBody.appendChild(headerRow);
-                       }
+                          }
 
                         createHeader("Hours");
                         createHeader("Pizzas Sold");
                         createHeader("# Deliveries");
                         createHeader("Drivers Needed");
+
+                          tblBody.appendChild(headerRow);
+
                         //***************END HEADER*************************************
 
                         for (var i=0; i<hoursArrayStore.length; i++) {    //NOTE: NEED TO UPDATE THIS FOR MORE DYNAMIC ARRAY LENGTH...
@@ -165,34 +163,34 @@ var clackamas = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Op
 var airport = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
 
-var stores = ["beaverton", "hillsboro", "downtown", "northeast", "clackamas", "airport"];
+var stores = [beaverton, hillsboro, downtown, northeast, clackamas, airport];
 
 //###############################################################################################################################################
 
 //here are some function calls....
 
 
-hillsboro.tableGen();
-beaverton.tableGen();
-downtown.tableGen();
-northeast.tableGen();
-clackamas.tableGen();
-airport.tableGen();
+// hillsboro.tableGen();
+// beaverton.tableGen();
+// downtown.tableGen();
+// northeast.tableGen();
+// clackamas.tableGen();
+// airport.tableGen();
 
 //function to loop through store objects and build table for each
-// function makeAllTables(){
-//       for ( i= 0 ; i < stores.length ; i++){
-//         stores[i].storeName;
-//     }
-//       }
-//
-// makeAllTables();
+function makeAllTables(){
+      for ( var i= 0 ; i < stores.length ; i++){
+        stores[i].tableGen();
+    }
+      }
 
-beaverton.pizzaSalesSumTotal = beaverton.pCalc.reduce(function(a,b){
-                            console.log(beaverton.pCalc);
-                            return a+b;
+makeAllTables();
 
-                          });
+//beaverton.pizzaSalesSumTotal = beaverton.pCalc.reduce(function(a,b){
+                          //   console.log(beaverton.pCalc);
+                          //   return a+b;
+                          //
+                          // });
 
 
 
