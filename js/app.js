@@ -39,6 +39,7 @@ var hoursArrayStore = ["8:00", "9:00", "10:00", "11:00", "12:00", "1:00", "2:00"
 // // // //###################################################################################333
 // // //
 // //create store object template:
+var storeObjects = [];
 
 function Store (storeName, address, phone, openTime, closeTime, days, pData, dData) {
     this.storeName = storeName;
@@ -51,10 +52,14 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
         };
     this.days = days;
     this.pData = pData;
+    this.pSum = 0
     this.pCalc = [];
     this.pMinMax = function (){ for (var i=0; i < this.pData.length ; i++){
                                     this.pCalc.push(minMax(this.pData[i][0], this.pData[i][1]));
                                       }
+                                      this.pSum = this.pCalc.reduce(function (a,b){
+                                                    return a+b
+                                                  });
                                 };
     this.pMinMax();
     this.dData = dData;
@@ -72,13 +77,24 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
                                          }
                                      }
                                 };
-
+      this.dminMax();
       this.tableGen = function (){
+
                         var putTableHere = document.getElementById("putSummaryTableHere");
                         var tbl = document.createElement("table");   //create table
                         var tblBody = document.createElement("tbody");
                         var headerRow = document.createElement("tr");
-                        var footer = document.createElement("tr");
+                        var titleRow = document.createElement("tr");
+                        var footerRow = document.createElement("tr");
+
+                      //***************TABLE TITLE*************************************
+
+                          var tblTitle = document.createElement("th");
+                          var tblTitleText = document.createTextNode(this.storeName);
+                          tblTitle.appendChild(tblTitleText);
+                          titleRow.appendChild(tblTitle);
+                          tblBody.appendChild(titleRow);
+                          tblTitle.setAttribute("colspan","4");
 
                       //***************START HEADER*************************************
 
@@ -109,7 +125,7 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
 
                         //create rows for pizza sales
                             var cellPizzas = document.createElement("td");
-                            var runPizzaSalesFunction = this.pMinMax();
+                            //var runPizzaSalesFunction = this.pMinMax();
                             var pizzaData = this.pCalc[i];
                             var cellTextPizzas = document.createTextNode(pizzaData);  //puts pizza sales into text Node
                             cellPizzas.appendChild(cellTextPizzas);
@@ -117,7 +133,7 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
 
                         //create rows for # of deliveries
                             var cellDeliveries = document.createElement("td");
-                            var runDeliveriesFunction = this.dminMax();
+                          //  var runDeliveriesFunction = this.dminMax();
                             var deliveryData = this.dCalc[i];
                             var cellTextDeliveries = document.createTextNode(deliveryData);
                             cellDeliveries.appendChild(cellTextDeliveries);
@@ -130,19 +146,47 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
                             cellDrivers.appendChild(cellTextDrivers);
                             row.appendChild(cellDrivers);
 
+
                             tblBody.appendChild(row);
                                 }  //end for loop
 
+
+                        //#####################FOOTER-SUM TOTAL########################################333
+
+                                function createFooter (textForFooter){
+                                var tblFooter = document.createElement("td");
+                                var footerText = document.createTextNode(textForFooter);
+                                tblFooter.appendChild(footerText);
+                                footerRow.appendChild(tblFooter);
+                            }
+
+                                createFooter("Total");
+                                createFooter(this.pSum);
+
+                                tblBody.appendChild(footerRow);
+
+
+                          //#####################END FOOTER####################################################
+
+
                     tbl.appendChild(tblBody);
+
+
 
                     if(putTableHere){
                     putTableHere.appendChild(tbl);
-
+                        var br = document.createElement("br");
+                        putTableHere.appendChild(br);
                       }
 
                     tbl.setAttribute("border","2");
 
                   }   //end create table
+
+
+      storeObjects.push(this);
+
+
     }  //end object constructor
 
 
@@ -179,23 +223,24 @@ var stores = [beaverton, hillsboro, downtown, northeast, clackamas, airport];
 
 
 
-function sumPerHour (nameOfStore){
-    nameOfStore.pMinMax();
-    for (var i = 0; i < 18 ; i++) {
-      nameOfStore.pcalc.reduce(function(a,b){
-      console.log(a+b);
-      });
-    }
-}
+// function sumPerHour (nameOfStore){
+//     nameOfStore.pMinMax();
+//     for (var i = 0; i < 18 ; i++) {
+//
+//     //   nameOfStore.pcalc.reduce(function(a,b){
+//     //   console.log(a+b);
+//     //  });
+//     }
+// }
 
-sumPerHour(beaverton);
+// sumPerHour(beaverton);
 
 
 
 //function to loop through store objects and build table for each
 function makeAllTables(){
-      for ( var i= 0 ; i < stores.length ; i++){
-          stores[i].tableGen();
+      for ( var i= 0 ; i < storeObjects.length ; i++){
+          storeObjects[i].tableGen();
           }
       }
 
