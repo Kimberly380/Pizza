@@ -177,7 +177,7 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
                     putTableHere.appendChild(tbl);
                         var br = document.createElement("br");
                         putTableHere.appendChild(br);
-                      }
+                      }   //checks for presence of tag on html page
 
                     tbl.setAttribute("border","2");
 
@@ -207,34 +207,27 @@ var clackamas = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Op
 var airport = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
 
-var stores = [beaverton, hillsboro, downtown, northeast, clackamas, airport];
+//###############################################################################################################################################/
+//PUT TOTAL FOR ALL STORES ON PUBLIC HTML PAGE (CURRENTLY ON BOTH PAGES AS WORKAROUND: IF STATEMENT IS NOT WORKING).
 
-//###############################################################################################################################################
+function pSumAllStores(){
+pGrandTotal = 0
+for (j = 0; j < storeObjects.length; j++) {
+        pGrandTotal += storeObjects[j].pSum;
+      }
+      return pGrandTotal + "  happy Pizza Odysseys this week!!";
+    }
 
-//here are some function calls....
+function printGrandTotal(){
+  var printPSum = document.getElementById("pizzasSold");
+      if("pizzasSold"){
+        printPSum.textContent = pSumAllStores();
+      }
+}
+pSumAllStores();
+printGrandTotal();
 
-// function addTableTitles (){
-//     var tableTitles = document.getElementById("tableTitles");
-//     tableTitles.textContent = stores[i].storeName;
-//   }
-
-
-//loop to add each time slot for all stores
-
-
-
-// function sumPerHour (nameOfStore){
-//     nameOfStore.pMinMax();
-//     for (var i = 0; i < 18 ; i++) {
-//
-//     //   nameOfStore.pcalc.reduce(function(a,b){
-//     //   console.log(a+b);
-//     //  });
-//     }
-// }
-
-// sumPerHour(beaverton);
-
+//###########################################################################################################################################3
 
 
 //function to loop through store objects and build table for each
@@ -246,20 +239,13 @@ function makeAllTables(){
 
 makeAllTables();
 
-
-
-//beaverton.pizzaSalesSumTotal = beaverton.pCalc.reduce(function(a,b){
-                          //   console.log(beaverton.pCalc);
-                          //   return a+b;
-                          //
-                          // });
+//###############################################################################################
+//Sum by hour
 
 
 
 
-//this.deliverySalesSumTotal = this.dCalc.reduce(function(a,b){
-                          //   return a+b;
-                          // });
+
 
 //###############################################################################################
 
