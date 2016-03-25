@@ -1,6 +1,6 @@
 body {
 font-family: "Audiowide";
-background-color: pink;
+background-color: white;
 
 }
 
@@ -26,3 +26,21 @@ img {
   text-decoration: none;
 
 }
+
+header{
+  background-color: red;
+}
+
+nav ul{
+    margin: 0px;
+
+  }
+nav li{
+    display:inline;
+    color: black;
+    padding-left: 15px;
+  }
+nav li a{
+    text-decoration: none;
+    color: black;
+  }

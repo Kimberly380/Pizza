@@ -1,20 +1,14 @@
+//hours array (placeholders: 6=0, 1am = 19)
+// var hoursArrayAll = [6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5]
 //
-//
-// //establish console log points, to check work.  this enables/disables the console log requests.
-// var checkYourWork = false;
-//
-//
-// //hours array (placeholders: 6=0, 1am = 19)
-// // var hoursArrayAll = [6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5]
-// //
-// // function hoursList (startTime, endTime){
-// //     var hoursArrayStore=[];
-// //         for (i = startTime; i <= endTime ; i++){
-// //         hoursArrayStore.push(hoursArrayAll[i]+":00");
-// //           }
-// //           return hoursArrayStore
-// // }
-// //   console.log(hoursList(2,19));
+// function hoursList (startTime, endTime){
+//     var hoursArrayStore=[];
+//         for (i = startTime; i <= endTime ; i++){
+//         hoursArrayStore.push(hoursArrayAll[i]+":00");
+//           }
+//           return hoursArrayStore
+// }
+//   console.log(hoursList(2,19));
 
 
 //establish array for time selection
@@ -32,12 +26,12 @@
 var tableObjects = {};
 
 
-// //for first pass, use the following array for the time column of the store tables, as well as the max iterations of i in the for loop of  table generation.
+//for first pass, use the following array for the time column of the store tables, as well as the max iterations of i in the for loop of  table generation.
 var hoursArrayStore = ["8:00", "9:00", "10:00", "11:00", "12:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "1:00"];
 
-// // // //###################################################################################333
+//##############################################################################################################################333
 
-// //create store object template:
+//create store object template:
 var storeObjects = [];
 
 function Store (storeName, address, phone, openTime, closeTime, days, pData, dData) {
