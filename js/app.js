@@ -81,6 +81,12 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
                         var footer = document.createElement("tr");
 
                       //***************START HEADER*************************************
+
+
+
+
+
+                        var footer = document.createElement("tr");
                         function createHeader (textForHeader){
                           var tblheader = document.createElement("th");
                           var headerText = document.createTextNode(textForHeader);
@@ -166,22 +172,28 @@ var stores = ["beaverton", "hillsboro", "downtown", "northeast", "clackamas", "a
 //here are some function calls....
 
 
-
-//hillsboro.tableGen();
+hillsboro.tableGen();
+beaverton.tableGen();
+downtown.tableGen();
+northeast.tableGen();
+clackamas.tableGen();
+airport.tableGen();
 
 //function to loop through store objects and build table for each
-function makeAllTables(){
-      for ( i= 0 ; i < stores.length ; i++){
-        stores[i].storeName;
+// function makeAllTables(){
+//       for ( i= 0 ; i < stores.length ; i++){
+//         stores[i].storeName;
+//     }
+//       }
+//
+// makeAllTables();
 
-    }
-      }
+beaverton.pizzaSalesSumTotal = beaverton.pCalc.reduce(function(a,b){
+                            console.log(beaverton.pCalc);
+                            return a+b;
 
-makeAllTables();
+                          });
 
-//beaverton.pizzaSalesSumTotal = this.pCalc.reduce(function(a,b){
-                          //   return a+b;
-                          // });
 
 
 
