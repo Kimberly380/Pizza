@@ -82,7 +82,6 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
 
                       //***************START HEADER*************************************
 
-
                           function createHeader (textForHeader){
                           var tblheader = document.createElement("th");
                           var headerText = document.createTextNode(textForHeader);
@@ -138,12 +137,13 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
 
                     if(putTableHere){
                     putTableHere.appendChild(tbl);
+
                       }
 
                     tbl.setAttribute("border","2");
 
                   }   //end create table
-    }  //end obect constructor
+    }  //end object constructor
 
 
 //##############################################################################################################################################
@@ -169,22 +169,39 @@ var stores = [beaverton, hillsboro, downtown, northeast, clackamas, airport];
 
 //here are some function calls....
 
+// function addTableTitles (){
+//     var tableTitles = document.getElementById("tableTitles");
+//     tableTitles.textContent = stores[i].storeName;
+//   }
 
-// hillsboro.tableGen();
-// beaverton.tableGen();
-// downtown.tableGen();
-// northeast.tableGen();
-// clackamas.tableGen();
-// airport.tableGen();
+
+//loop to add each time slot for all stores
+
+
+
+function sumPerHour (nameOfStore){
+    nameOfStore.pMinMax();
+    for (var i = 0; i < 18 ; i++) {
+      nameOfStore.pcalc.reduce(function(a,b){
+      console.log(a+b);
+      });
+    }
+}
+
+sumPerHour(beaverton);
+
+
 
 //function to loop through store objects and build table for each
 function makeAllTables(){
       for ( var i= 0 ; i < stores.length ; i++){
-        stores[i].tableGen();
-    }
+          stores[i].tableGen();
+          }
       }
 
 makeAllTables();
+
+
 
 //beaverton.pizzaSalesSumTotal = beaverton.pCalc.reduce(function(a,b){
                           //   console.log(beaverton.pCalc);
