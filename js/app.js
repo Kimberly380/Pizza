@@ -15,8 +15,8 @@
 // //           return hoursArrayStore
 // // }
 // //   console.log(hoursList(2,19));
-// //
-//
+
+
 //establish array for time selection
   var timeArray=[];
   var openHours=[];
@@ -28,16 +28,15 @@
           }
         }
 
-//
-// //establish global variables
-//
-//
-//
+//to contain objects for running create table funtion below
+var tableObjects = {};
+
+
 // //for first pass, use the following array for the time column of the store tables, as well as the max iterations of i in the for loop of  table generation.
 var hoursArrayStore = ["8:00", "9:00", "10:00", "11:00", "12:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "1:00"];
 
 // // // //###################################################################################333
-// // //
+
 // //create store object template:
 var storeObjects = [];
 
@@ -82,7 +81,7 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
       this.dminMax();
       this.tableGen = function (){
 
-                        var putTableHere = document.getElementById("putSummaryTableHere");
+                        var putTableHere = document.getElementById("putAllTablesHere");
                         var tbl = document.createElement("table");   //create table
                         var tblBody = document.createElement("tbody");
                         var headerRow = document.createElement("tr");
@@ -251,13 +250,13 @@ function pSumByHour(){
               tempCounter += storeObjects[m].pCalc[k];
           }
           totalArray.push(tempCounter);
+        }
 
-      }
-
-    console.log(totalArray);
+    tableObjects.totalArray = totalArray;
 }
 
 pSumByHour();
+
 
 
 //###############################################################################################
@@ -280,8 +279,6 @@ for (i=0; i < storeObjects.length; i++){
 
 //print out weekly totals
 
-
-
 function weeklyTotals () {
     printWeekTotal = document.getElementById("weeklyTotals");
       for (z = 0 ; z < storeObjects.length; z++){
@@ -295,17 +292,7 @@ function weeklyTotals () {
 weeklyTotals();
 
 
-//#################################################################################################
-//
 
-// //final push to webpage
-//
-// var totalOdesseyPush = document.getElementById("happyOdysseys");
-//
-// if(totalOdesseyPush){                        //need if statement so this will not affect other pages that do not have this reference.
-// totalOdesseyPush.textContent = totalOdysseysSum + " happy Pizza Odysseys this week!";  //would like to number format this...
-// }
-//
 // //###################################################################################################
 
 // //min max function
@@ -313,3 +300,57 @@ weeklyTotals();
 function minMax (min, max) {
     return Math.round(Math.random() * (max-min))+ min;
 }
+
+//##############################################################################################################################
+
+//GENERATE TABLE function
+
+function createTable (hourArray, sumArray){
+
+  var placeTable = document.getElementById("putSummaryTableHere");
+  var newTable = document.createElement("table");
+  var newTBody = document.createElement("tBody");
+  //var newRow = document.createElement("tr");
+  var newHeader = document.createElement("tr");
+
+//**********create header rows**********************************
+
+        function totalHeader (text){
+          var tblHeader = document.createElement("th");
+          var tblHeaderText = document.createTextNode(text);
+          tblHeader.appendChild(tblHeaderText);
+          newHeader.appendChild(tblHeader);
+        }
+        newTBody.appendChild(newHeader);
+
+        totalHeader("Time");
+        totalHeader("Total Sales");
+
+//**********create body rows**********************************
+
+        for (var i=0; i < hoursArrayStore.length; i++) {
+
+            var newRow = document.createElement("tr");
+
+            var rowCells = document.createElement("td");
+            var cellsText = document.createTextNode(hourArray[i]);
+            rowCells.appendChild(cellsText);
+            newRow.appendChild(rowCells);
+
+
+            var rowCells = document.createElement("td");
+            var cellsText = document.createTextNode(sumArray[i]);
+            rowCells.appendChild(cellsText);
+            newRow.appendChild(rowCells);
+
+            newTBody.appendChild(newRow);
+        }
+        newTable.appendChild(newTBody);
+        placeTable.appendChild(newTable);
+
+        newTable.setAttribute("border", "2");
+}
+
+
+//to run the table
+createTable(hoursArrayStore,tableObjects.totalArray);
