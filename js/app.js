@@ -240,19 +240,22 @@ makeAllTables();
 //###############################################################################################
 //Sum by hour in total table
 
+function pSumByHour(){
+    var totalArray = [];
 
-// function pSumByHour(stores){
-//     var totalArray = [];
-//     m=0;
-//     for (k = 0; k < stores[m].pCalc.length ; k++){
-//           for (m=0;  m < stores.length; m++){
-//               totalArray[k] += stores[m].pCalc[k];
-//           }
-//       }
-//     console.log(totalArray);
-// }
-//
-// pSumByHour(storeObjects);
+      for (var k = 0; k < storeObjects[0].pCalc.length ; k++){
+        tempCounter = 0
+          for (var m=0;  m < storeObjects.length; m++){
+              tempCounter += storeObjects[m].pCalc[k];
+          }
+          totalArray.push(tempCounter);
+
+      }
+
+    console.log(totalArray);
+}
+
+pSumByHour();
 
 
 //###############################################################################################
