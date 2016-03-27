@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"></meta>
   <title>Store Update</title>
-    <link href="formStyleSheet.css" type="text/css" rel="stylesheet" />
+  <link href="formStyleSheet.css" type="text/css" rel="stylesheet" />
 </head>
 
 
@@ -23,44 +23,64 @@
       <input  type="radio", name = "storeUpdate" value ="Create" />  Create New Store <br/>
       <input  type="radio", name = "storeUpdate" value ="Delete" />  Delete Existing Store
 
-<fieldset id="fieldSelector">
-<p id=updatePrompt>Which store would you like to update?</p>
-  <select id ="selectStore">
-      <option>Select Store</option>
-  </select>
+<fieldset id="fieldSelector" style="overflow:hidden;">
+    <div id=updateForm>
+    <legend>Update Store Info</legend>  
+        <p id=updatePrompt>Which store would you like to update?</p>
+          <select id ="selectStore">
+            <option>Select Store</option>
+          </select>
 
-<div id="storeUpdateForm">
-<p>Input updates below</p>
-    <p>Store Name:
-        <input id="storename" type="text" name="storeName" size="15"></input>
-    </p>
-    <p>Store Address:
-        <input id="storeaddress" type="text" name="storeName" size="45"></input>
-    </p>
-    <p>Store Phone:
-        <input id="storephone" type="text" name="storeName" size="15"></input>
-    </p>
+        <p>Input updates below</p>
+            <p>Store Name:
+                <input id="storename" type="text" name="storeName" size="15"></input>
+            </p>
+            <p>Store Address:
+                <input id="storeaddress" type="text" name="storeName" size="45"></input>
+            </p>
+            <p>Store Phone:
+                <input id="storephone" type="text" name="storeName" size="15"></input>
+            </p>
+            <p>Open Time:
+              <select id = openTime>
+                <option>Open Time</option>
+              </select>
+            </p>
+            <p>Close Time:
+              <select id = closeTime>
+                <option>Close Time</option>
+              </select>
+            </p>
+            <p>Days Open:
+              <input id="storehours" type="text" size="15"></input>
+            </p>
 
-    <div id="updateButton"> <input type="submit" name="makeChange" value="Update Store" />
-</div>
+            <div id="updateButton"> <input type="submit" name="makeChange" value="Update Store" /></div>
+            <div id="deleteButton"> <input type = "submit" name ="deleteStore" value ="DELETE Store" /></div>
+      </div>
 
-<div id="addStoreForm">
-    <p>Complete the following add request:</p>
-          <p>Store Name:
-              <input id="newStoreName" type="text" name="storeNew" size="15"></input>
-          </p>
-          <p>Store Address:
-              <input id="newStoreAddress" type="text" name="storeNew" size="45"></input>
-          </p>
-          <p>Store Phone:
-              <input id="newStorePhone" type="text" name="storeNew" size="15"></input>
-          </p>
+    <div id="addStoreForm">
+        <p>Complete the following add request:</p>
+              <p>Store Name:
+                  <input id="newStoreName" type="text" name="storeNew" size="15"></input>
+              </p>
+              <p>Store Address:
+                  <input id="newStoreAddress" type="text" name="storeNew" size="45"></input>
+              </p>
+              <p>Store Phone:
+                  <input id="newStorePhone" type="text" name="storeNew" size="15"></input>
+              </p>
+              <p>Store Hours:
+                  <input id="newStoreDays" type="text" name="storeNew" size="15"></input>
+              </p>
 
-          <div id="addButton"> <input type="submit" name="addNew" value="Add New Store" />
+
+
+              <div id="addButton"> <input type="submit" name="addNew" value="Add New Store" />
+        </div>
+
+
     </div>
-
-
-</div>
 
 </fieldset>
 

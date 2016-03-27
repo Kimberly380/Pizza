@@ -27,7 +27,7 @@ var tableObjects = {};
 
 
 //for first pass, use the following array for the time column of the store tables, as well as the max iterations of i in the for loop of  table generation.
-var hoursArrayStore = ["8:00", "9:00", "10:00", "11:00", "12:00", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "1:00"];
+var hoursArrayStore = ["6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00am", "1:00am", "2:00am", "3:00am", "4:00am", "5:00am", "6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00am", "1:00am", "2:00am"];
 
 //##############################################################################################################################333
 
@@ -354,44 +354,66 @@ createTable(hoursArrayStore,tableObjects.totalArray);
 //#########################FROMS AND EVENT HANDLER CODE######################################################################
 
 //display appropriate form depending on user response to store update radio box
-var storeUpdate = document.getElementsByName("storeUpdate");
+var sUpdate = document.getElementsByName("storeUpdate");
 var updatePrompt=document.getElementById("updatePrompt");
-var updateForm = document.getElementById("fieldSelector");
-// var  sCreate = document.getElementById("storeCreate");
-// var  sDelete = document.getElementById("storeDelete");
+var updateForm = document.getElementById("updateForm");
+var addStoreForm = document.getElementById("addStoreForm");
+var  sCreate = document.getElementById("storeCreate");
+var  sDelete = document.getElementById("storeDelete");
+var formWrapper = document.getElementById("fieldSelector");
 
+function displayForm () {
+    if (sUpdate[0].checked) {
+        updatePrompt.textContent = "Which store would you like to UPDATE?";
+        updateForm.style.display = "block";
+        addStoreForm.style.display = "none";
+        formWrapper.style.display = "block";
+        updateButton.style.display = "block";
+        deleteButton.style.display="none";
+      } else if (sUpdate[1].checked){
+        addStoreForm.style.display = "block";
+        updateForm.style.display = "none";
+        formWrapper.style.display = "block";
+      } else if (sUpdate[2].checked) {
+        updatePrompt.textContent = "Which store would you like to DELETE?";
+        updateForm.style.display = "block";
+        addStoreForm.style.display = "none";
+        formWrapper.style.display = "block";
+        updateButton.style.display = "none";
+        deleteButton.style.display="block";
+      } else {
+        updateForm.style.display = "none";
+        addStoreForm.style.display = "none";
+        formWrapper.style.display = "none";
+    }
+}
+  for(var r = 0; r<sUpdate.length; r++){
+   sUpdate[r].addEventListener('change', displayForm, false);
+}
 
-// function displayForm () {
-//       if (storeUpdate[1].checked) {
-//         updatePrompt.textContent = "Which store would you like to update?";
-//       } else if (storeUpdate[2].checked){
-//         updatePrompt.textContent = "Complete the following form for your new store:";
-//         updateForm.style.display = "none";
-//       } else if (storeUpdate[3].checked) {
-//         updatePrompt.textContent = "Which store would you like to delete?";
-//       } else {
-//         updateForm.style.display = "none";
-//     }
-// }
-//     storeUpdate.addEventListener('change', displayForm, false);
-
-//############### EVERYTHING IN THIS SECTION IS FOR ADDING A NEW STORE ####################
+//############### EVERYTHING IN BELOW SECTION IS FOR ADDING A NEW STORE ####################
 
 var txtBxNameNew = document.getElementById("newStoreName");
 var txtBxAddyNew = document.getElementById("newStoreAddress");
 var txtBxPhoneNew = document.getElementById("newStorePhone");
 var addButton= document.getElementById("addButton");
+var txtBxDaysNew = document.getElementById("newStoreDays");
+var addNewStore;
 
 function addNewStore (){
       var a = txtBxNameNew.value;
       var b = txtBxAddyNew.value;
       var c = txtBxPhoneNew.value;
+      var d = openTime.value;
+      var e = closeTime.value;
+      var f = txtBxHoursNew.value;
 
       var verify = confirm ("Are you sure you want to add the following store?\nStore Name:  " +a +
-                              "\nStore Address:  "+b + " \nStore Phone:  "+c);
+                              "\nStore Address:  "+b + " \nStore Phone:  "+c + "\n Store opens at:  "
+                            + d + "\nStore closes at:  "+e+ "\n Days store is Open:  " + f);
 
-    if(verify) {
-    var newStore+storeObjects.length = new Store(a,b,c,"time","time","day",[[0,4],[0,6]],[[0,4],[0,6]]);
+  if(verify) {
+      allStoreData.push(addNewStore = new Store(a,b,c,d,e,f,[[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,6]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]));
 
       console.log(storeObjects[storeObjects.length -1]);
     }
@@ -402,7 +424,7 @@ function addNewStore (){
 
 //############### EVERYTHING IN THIS SECTION IS FOR UPDATING AN EXISTING STORE ####################
 
-//POPULATING DROPDOWN OF STORE NAMES FOR UPDATING AND DELETING EXISTING STORES.
+//Populating dropdown with all existing stores.
 if("selectStore"){
     var selectStore = document.getElementById("selectStore");
 
@@ -414,40 +436,49 @@ if("selectStore"){
       }
     }
 
-
-
-
 //add placeholders to textboxes depending on user store selection
 
     var txtBxName = document.getElementById("storename");
     var txtBxAddy = document.getElementById("storeaddress");
     var txtBxPhone = document.getElementById("storephone");
     var updateButton= document.getElementById("updateButton");
+    var deleteButton = document.getElementById("deleteButton");
 
     function addHint () {
         var b = this.options[this.selectedIndex].index;
           txtBxName.placeholder = storeObjects[b-1].storeName;
           txtBxAddy.placeholder= storeObjects[b-1].address;
           txtBxPhone.placeholder= storeObjects[b-1].phone;
+          openTime.placeholder = storeObjects[b-1].openTime;    //TODO: set default values for open/close dropdowns.
     }
 
     selectStore.addEventListener('change', addHint, false);
 
+//populate hours open and closed drop downs for user selection
+if("openTime"|| "closeTime"){
+    var openTime = document.getElementById("openTime");
+    var closeTime = document.getElementById("closeTime");
+
+    for (var h = 0; h < hoursArrayStore.length; h++){
+          var optOpen = document.createElement("option");
+          var optClose = document.createElement("option");
+          var optOpenTxt = document.createTextNode(hoursArrayStore[h]);
+          var optCloseTxt = document.createTextNode(hoursArrayStore[h]);
+          optOpen.appendChild(optOpenTxt);
+          optClose.appendChild(optCloseTxt);
+          openTime.appendChild(optOpen);
+          closeTime.appendChild(optClose);
+      }
+    }
 
 //---------------------------------------------------------------
 
-
+//get confirmation from user to post updates
 function updateObj () {
-
-  prompt("Your store will be updated as follows:\nStore Name: "  +
-        txtBxName.value + "\nAddress:   " + selectStore.value
+  confirm("Your store will be updated as follows:\nStore Name: "  +
+        txtBxName.value + "\nAddress:   " + txtBxAddy + "\nPhone: "+
+        textBxPhone
       );
-
-    // var a = txtBxName.value;
-    // var b = selectStore.value;
-    // console.log(b);
-    // var c = storeObject[b-1].storeName
 }
 
-//txtBxName.addEventListener ('blur', updateObj, false);
 updateButton.addEventListener("click", updateObj, false);
