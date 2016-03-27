@@ -146,7 +146,7 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
                                 }  //end for loop
 
 
-                        //#####################FOOTER-SUM TOTAL########################################333
+                        //#####################START TABLE FOOTER-SUM TOTAL########################################333
 
                                 function createFooter (textForFooter){
                                 var tblFooter = document.createElement("td");
@@ -161,7 +161,7 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
                                 tblBody.appendChild(footerRow);
 
 
-                          //#####################END FOOTER####################################################
+                          //#####################END TABLE FOOTER####################################################
 
 
                     tbl.appendChild(tblBody);
@@ -173,6 +173,7 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
                       }   //checks for presence of tag on html page
 
                     tbl.setAttribute("border","2");
+                    footerRow.style.background = "rgb(255,0,0)"
 
                   }   //end create table
 
@@ -191,13 +192,13 @@ var beaverton = new Store("Beaverton", "some address", "555-555-5555", 8, 1, "Op
 
 var hillsboro = new Store("Hillsboro", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[1,3],[1,3],[1,3],[5,9],[5,9],[5,9],[2,13],[2,13],[2,13],[18,32],[18,32],[18,32],[1,3],[1,3],[1,3],[8,20],[8,20],[8,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
-var downtown = new Store("downtown", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+var downtown = new Store("Downtown", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
-var northeast = new Store("northeast", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+var northeast = new Store("Northeast", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
-var clackamas = new Store("clackamas", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+var clackamas = new Store("Clackamas", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
-var airport = new Store("airport", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+var airport = new Store("Airport", "some address", "555-555-5555", 8, 1, "Open 7 Days a Week", [[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
 
 
 //###############################################################################################################################################/
@@ -273,16 +274,17 @@ for (i=0; i < storeObjects.length; i++){
 
 //print out weekly totals
 
-function weeklyTotals () {
-    printWeekTotal = document.getElementById("weeklyTotals");
-      for (z = 0 ; z < storeObjects.length; z++){
-            var lineItem = document.createElement("p");
-            var lineItemText = document.createTextNode(storeObjects[z].storeName + " had sales of " + storeObjects[z].pSum + " last week.");
-            lineItem.appendChild(lineItemText);
-            printWeekTotal.appendChild(lineItem);
+function weeklyTotals (){
+    if("weeklyTotals"){
+        printWeekTotal = document.getElementById("weeklyTotals");
+          for (z = 0 ; z < storeObjects.length; z++){
+                var lineItem = document.createElement("p");
+                var lineItemText = document.createTextNode(storeObjects[z].storeName + " had sales of " + storeObjects[z].pSum + " last week.");
+                lineItem.appendChild(lineItemText);
+                printWeekTotal.appendChild(lineItem);
+          }
       }
 }
-
 weeklyTotals();
 
 
@@ -309,42 +311,143 @@ function createTable (hourArray, sumArray){
 
 //**********create header rows**********************************
 
-        function totalHeader (text){
-          var tblHeader = document.createElement("th");
-          var tblHeaderText = document.createTextNode(text);
-          tblHeader.appendChild(tblHeaderText);
-          newHeader.appendChild(tblHeader);
-        }
-        newTBody.appendChild(newHeader);
+  function totalHeader (text){
+    var tblHeader = document.createElement("th");
+    var tblHeaderText = document.createTextNode(text);
+    tblHeader.appendChild(tblHeaderText);
+    newHeader.appendChild(tblHeader);
+  }
+  newTBody.appendChild(newHeader);
 
-        totalHeader("Time");
-        totalHeader("Total Sales");
+  totalHeader("Time");
+  totalHeader("Total Sales");
 
 //**********create body rows**********************************
 
-        for (var i=0; i < hoursArrayStore.length; i++) {
+  for (var i=0; i < hoursArrayStore.length; i++) {
 
-            var newRow = document.createElement("tr");
+      var newRow = document.createElement("tr");
 
-            var rowCells = document.createElement("td");
-            var cellsText = document.createTextNode(hourArray[i]);
-            rowCells.appendChild(cellsText);
-            newRow.appendChild(rowCells);
+      var rowCells = document.createElement("td");
+      var cellsText = document.createTextNode(hourArray[i]);
+      rowCells.appendChild(cellsText);
+      newRow.appendChild(rowCells);
 
 
-            var rowCells = document.createElement("td");
-            var cellsText = document.createTextNode(sumArray[i]);
-            rowCells.appendChild(cellsText);
-            newRow.appendChild(rowCells);
+      var rowCells = document.createElement("td");
+      var cellsText = document.createTextNode(sumArray[i]);
+      rowCells.appendChild(cellsText);
+      newRow.appendChild(rowCells);
 
-            newTBody.appendChild(newRow);
-        }
-        newTable.appendChild(newTBody);
-        placeTable.appendChild(newTable);
+      newTBody.appendChild(newRow);
+  }
+  newTable.appendChild(newTBody);
+  placeTable.appendChild(newTable);
 
-        newTable.setAttribute("border", "2");
+  newTable.setAttribute("border", "2");
 }
 
 
 //to run the table
 createTable(hoursArrayStore,tableObjects.totalArray);
+
+//#########################FROMS AND EVENT HANDLER CODE######################################################################
+
+//display appropriate form depending on user response to store update radio box
+var storeUpdate = document.getElementsByName("storeUpdate");
+var updatePrompt=document.getElementById("updatePrompt");
+var updateForm = document.getElementById("fieldSelector");
+// var  sCreate = document.getElementById("storeCreate");
+// var  sDelete = document.getElementById("storeDelete");
+
+
+// function displayForm () {
+//       if (storeUpdate[1].checked) {
+//         updatePrompt.textContent = "Which store would you like to update?";
+//       } else if (storeUpdate[2].checked){
+//         updatePrompt.textContent = "Complete the following form for your new store:";
+//         updateForm.style.display = "none";
+//       } else if (storeUpdate[3].checked) {
+//         updatePrompt.textContent = "Which store would you like to delete?";
+//       } else {
+//         updateForm.style.display = "none";
+//     }
+// }
+//     storeUpdate.addEventListener('change', displayForm, false);
+
+//############### EVERYTHING IN THIS SECTION IS FOR ADDING A NEW STORE ####################
+
+var txtBxNameNew = document.getElementById("newStoreName");
+var txtBxAddyNew = document.getElementById("newStoreAddress");
+var txtBxPhoneNew = document.getElementById("newStorePhone");
+var addButton= document.getElementById("addButton");
+
+function addNewStore (){
+      var a = txtBxNameNew.value;
+      var b = txtBxAddyNew.value;
+      var c = txtBxPhoneNew.value;
+
+      var verify = confirm ("Are you sure you want to add the following store?\nStore Name:  " +a +
+                              "\nStore Address:  "+b + " \nStore Phone:  "+c);
+
+    if(verify) {
+    var newStore+storeObjects.length = new Store(a,b,c,"time","time","day",[[0,4],[0,6]],[[0,4],[0,6]]);
+
+      console.log(storeObjects[storeObjects.length -1]);
+    }
+
+}
+    addButton.addEventListener("click", addNewStore, false);
+
+
+//############### EVERYTHING IN THIS SECTION IS FOR UPDATING AN EXISTING STORE ####################
+
+//POPULATING DROPDOWN OF STORE NAMES FOR UPDATING AND DELETING EXISTING STORES.
+if("selectStore"){
+    var selectStore = document.getElementById("selectStore");
+
+      for (var s = 0; s < storeObjects.length; s++){
+          var createEl = document.createElement("option");
+          var createNode = document.createTextNode(storeObjects[s].storeName)
+          createEl.appendChild(createNode);
+          selectStore.appendChild(createEl);
+      }
+    }
+
+
+
+
+//add placeholders to textboxes depending on user store selection
+
+    var txtBxName = document.getElementById("storename");
+    var txtBxAddy = document.getElementById("storeaddress");
+    var txtBxPhone = document.getElementById("storephone");
+    var updateButton= document.getElementById("updateButton");
+
+    function addHint () {
+        var b = this.options[this.selectedIndex].index;
+          txtBxName.placeholder = storeObjects[b-1].storeName;
+          txtBxAddy.placeholder= storeObjects[b-1].address;
+          txtBxPhone.placeholder= storeObjects[b-1].phone;
+    }
+
+    selectStore.addEventListener('change', addHint, false);
+
+
+//---------------------------------------------------------------
+
+
+function updateObj () {
+
+  prompt("Your store will be updated as follows:\nStore Name: "  +
+        txtBxName.value + "\nAddress:   " + selectStore.value
+      );
+
+    // var a = txtBxName.value;
+    // var b = selectStore.value;
+    // console.log(b);
+    // var c = storeObject[b-1].storeName
+}
+
+//txtBxName.addEventListener ('blur', updateObj, false);
+updateButton.addEventListener("click", updateObj, false);

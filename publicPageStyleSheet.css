@@ -5,13 +5,6 @@ background-color: white;
 }
 
 
-img {
-
-
-
-}
-
-
 #storeInfo {
   font-size: 10pt;
 
@@ -27,20 +20,27 @@ img {
 
 }
 
-header{
-  background-color: red;
+.pizzaImage{
+  width=1000px;
+  height=auto;
 }
 
-nav ul{
-    margin: 0px;
 
-  }
+nav{
+    background-color: gray;
+    text-align: center;
+
+}
 nav li{
     display:inline;
     color: black;
-    padding-left: 15px;
-  }
+    padding: .5em;
+    }
 nav li a{
     text-decoration: none;
     color: black;
   }
+
+#weeklyTotals, #putSummaryTableHere {
+  display: none;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"></meta>
+  <title>Store Update</title>
+    <link href="formStyleSheet.css" type="text/css" rel="stylesheet" />
+</head>
+
+
+<body>
+  <h1>Pizza 3001</h1>
+    <nav>
+      <ul>
+        <li><a href="publicPage.html">HOME</a></li>
+        <li>CONTACT</li>
+        <li><a href="index.html">MANAGEMENT LOGIN</a></li>
+      </ul>
+    </nav>
+
+
+<p>What would you like to do?</p>
+      <input  type="radio", name = "storeUpdate" value ="Update" />  Update Existing Store <br/>
+      <input  type="radio", name = "storeUpdate" value ="Create" />  Create New Store <br/>
+      <input  type="radio", name = "storeUpdate" value ="Delete" />  Delete Existing Store
+
+<fieldset id="fieldSelector">
+<p id=updatePrompt>Which store would you like to update?</p>
+  <select id ="selectStore">
+      <option>Select Store</option>
+  </select>
+
+<div id="storeUpdateForm">
+<p>Input updates below</p>
+    <p>Store Name:
+        <input id="storename" type="text" name="storeName" size="15"></input>
+    </p>
+    <p>Store Address:
+        <input id="storeaddress" type="text" name="storeName" size="45"></input>
+    </p>
+    <p>Store Phone:
+        <input id="storephone" type="text" name="storeName" size="15"></input>
+    </p>
+
+    <div id="updateButton"> <input type="submit" name="makeChange" value="Update Store" />
+</div>
+
+<div id="addStoreForm">
+    <p>Complete the following add request:</p>
+          <p>Store Name:
+              <input id="newStoreName" type="text" name="storeNew" size="15"></input>
+          </p>
+          <p>Store Address:
+              <input id="newStoreAddress" type="text" name="storeNew" size="45"></input>
+          </p>
+          <p>Store Phone:
+              <input id="newStorePhone" type="text" name="storeNew" size="15"></input>
+          </p>
+
+          <div id="addButton"> <input type="submit" name="addNew" value="Add New Store" />
+    </div>
+
+
+</div>
+
+</fieldset>
+
+
+
+<div id= "putSummaryTableHere"></div>
+<p id="pizzasSold"></p>
+<div id="weeklyTotals"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
