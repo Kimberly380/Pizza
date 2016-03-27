@@ -396,8 +396,9 @@ function displayForm () {
 var txtBxNameNew = document.getElementById("newStoreName");
 var txtBxAddyNew = document.getElementById("newStoreAddress");
 var txtBxPhoneNew = document.getElementById("newStorePhone");
-var addButton= document.getElementById("addButton");
 var txtBxDaysNew = document.getElementById("newStoreDays");
+var addButton= document.getElementById("addButton");
+
 var addNewStore;
 
 function addNewStore (){
@@ -406,7 +407,7 @@ function addNewStore (){
       var c = txtBxPhoneNew.value;
       var d = openTime.value;
       var e = closeTime.value;
-      var f = txtBxHoursNew.value;
+      var f = txtBxDaysNew.value;
 
       var verify = confirm ("Are you sure you want to add the following store?\nStore Name:  " +a +
                               "\nStore Address:  "+b + " \nStore Phone:  "+c + "\n Store opens at:  "
@@ -474,10 +475,12 @@ if("openTime"|| "closeTime"){
 //---------------------------------------------------------------
 
 //get confirmation from user to post updates
+
+
 function updateObj () {
   confirm("Your store will be updated as follows:\nStore Name: "  +
-        txtBxName.value + "\nAddress:   " + txtBxAddy + "\nPhone: "+
-        textBxPhone
+        txtBxName.value + "\nAddress:   " + txtBxAddy.value + "\nPhone: "+
+        txtBxPhone.value
       );
 }
 

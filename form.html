@@ -4,6 +4,7 @@
   <meta charset="utf-8"></meta>
   <title>Store Update</title>
   <link href="formStyleSheet.css" type="text/css" rel="stylesheet" />
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 </head>
 
 
@@ -23,55 +24,58 @@
       <input  type="radio", name = "storeUpdate" value ="Create" />  Create New Store <br/>
       <input  type="radio", name = "storeUpdate" value ="Delete" />  Delete Existing Store
 
-<fieldset id="fieldSelector" style="overflow:hidden;">
-    <div id=updateForm>
-    <legend>Update Store Info</legend>  
+<fieldset id="fieldSelector" >
+  <div id=updateForm>
+    <legend>Update Existing Store</legend>
         <p id=updatePrompt>Which store would you like to update?</p>
           <select id ="selectStore">
             <option>Select Store</option>
           </select>
 
-        <p>Input updates below</p>
-            <p>Store Name:
-                <input id="storename" type="text" name="storeName" size="15"></input>
+        <p ></p>
+            <p class="userPrompt">Store Name:
+                <input id="storename" type="text" name="storeName" size="35"></input>
             </p>
-            <p>Store Address:
-                <input id="storeaddress" type="text" name="storeName" size="45"></input>
+            <p class="userPrompt">Store Address:
+                <input id="storeaddress" type="text" name="storeName" size="35"></input>
             </p>
-            <p>Store Phone:
-                <input id="storephone" type="text" name="storeName" size="15"></input>
+            <p class="userPrompt">Store Phone:
+                <input id="storephone" type="text" name="storeName" size="35"></input>
             </p>
-            <p>Open Time:
-              <select id = openTime>
+
+            <p class="hours">Open Time:
+              <select id ="openTime">
                 <option>Open Time</option>
               </select>
             </p>
-            <p>Close Time:
-              <select id = closeTime>
+            <p  class="hours">Close Time:
+              <select id ="closeTime" >
                 <option>Close Time</option>
               </select>
             </p>
-            <p>Days Open:
-              <input id="storehours" type="text" size="15"></input>
+
+            <p class="userPrompt">Days Open:
+              <input id="storehours" type="text" size="35" name="storeName"></input>
             </p>
 
             <div id="updateButton"> <input type="submit" name="makeChange" value="Update Store" /></div>
             <div id="deleteButton"> <input type = "submit" name ="deleteStore" value ="DELETE Store" /></div>
-      </div>
+    </div>
 
     <div id="addStoreForm">
+      <legend>Add New Store</legend>
         <p>Complete the following add request:</p>
               <p>Store Name:
-                  <input id="newStoreName" type="text" name="storeNew" size="15"></input>
+                  <input id="newStoreName" type="text" name="storeNew" size="35"></input>
               </p>
               <p>Store Address:
-                  <input id="newStoreAddress" type="text" name="storeNew" size="45"></input>
+                  <input id="newStoreAddress" type="text" name="storeNew" size="35"></input>
               </p>
               <p>Store Phone:
-                  <input id="newStorePhone" type="text" name="storeNew" size="15"></input>
+                  <input id="newStorePhone" type="text" name="storeNew" size="35"></input>
               </p>
               <p>Store Hours:
-                  <input id="newStoreDays" type="text" name="storeNew" size="15"></input>
+                  <input id="newStoreDays" type="text" name="storeNew" size="35"></input>
               </p>
 
 

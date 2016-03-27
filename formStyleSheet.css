@@ -3,21 +3,84 @@
   display:none;
 }
 
-#fieldSelector{
-  display: none;
-  width: 350px;
-  border: 1px solid #dcdcdc;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: left;
-  background-color: yellow;
+body {
+font-family: "Raleway";
+
 }
 
-legend{
-  background-color: #efefef;
+#fieldSelector{
+  display: none;
+  width: 400px;
+  background-color: f9e9ca;
   border: 1px solid #dcdcdc;
   border-radius: 10px;
-  padding: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-bottom: 40px;
   text-align: left;
+  color: black;
+    -moz-box-shadow: 0 0 12px #777777;
+    -webkit-box-shadow: 0 0 12px #777777;
+  box-shadow: 0 0 12px #777777;
+  overflow: visible;
+  margin-top: 50px;
+}
+
+legend {
+  background-color: #2f9aa5;
+  height: 50px;
+  font-size:32px;
+  color: white;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right:10px;
+  padding-top: 15px;
+  text-align: center;
   text-transform: uppercase;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -10px;
+  overflow: visible;
+  width: 540px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 5px;
+}
+
+input[name=storeName],storeHours {
+  font-size: 100%;
+  background-color: #f2f2f2;
+  display:inline-block;
+  height: 24px;
+  border: 1px solid #bdbdbd;
+  display:inline-block;
+  float: right;
+  margin-right:0px;
+}
+
+.updatePrompt {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.userPrompt{
+  display: block;
+  padding-right: 35px;
+  font-size:18px;
+}
+
+#openTime, #closeTime{
+  display:inline-block;
+  background-color: #f2f2f2;
+  color: black;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #bdbdbd;
+  cursor: pointer;
+  position: relative;
+}
+.hours {
+display: inline-block;
+padding-left: 35px;
+
 }
