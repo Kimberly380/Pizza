@@ -27,7 +27,7 @@ var tableObjects = {};
 
 
 //for first pass, use the following array for the time column of the store tables, as well as the max iterations of i in the for loop of  table generation.
-var hoursArrayStore = ["6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00am", "1:00am", "2:00am", "3:00am", "4:00am", "5:00am", "6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00am", "1:00am", "2:00am"];
+var hoursArrayStore = [ "8:00am", "9:00am", "10:00am", "11:00am", "12:00am", "1:00am", "2:00am", "3:00am", "4:00am", "5:00am", "6:00am", "7:00am", "8:00am", "9:00am", "10:00am", "11:00am", "12:00am", "1:00am"];
 
 //##############################################################################################################################333
 
@@ -38,7 +38,17 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
     this.storeName = storeName;
     this.address = address;
     this.phone = phone;
-    this.storeHours = hoursArrayStore[0] + "-" + hoursArrayStore[17];
+    this.storeHours =
+    function(open,closed){   //position in array above
+                      var open = hoursArrayStore[open]
+                      var closed =hoursArrayStore[closed];
+                      var hrsArray =[];
+                        for(i=open ; i< closed-open+1; i++){
+                          hrsArray += hoursArrayStore[i];
+                        }
+                        cosole.log(hrsArray);
+                      return  hrsArray;
+                    }
 
     // function (openTime,closeTime){
     //       var open = timeArray[openTime];
