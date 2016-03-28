@@ -82,5 +82,8 @@ input[name=storeName],storeHours {
 .hours {
 display: inline-block;
 padding-left: 35px;
+}
+#rocket {
+  display: inline-block;
 
 }

@@ -264,7 +264,9 @@ for (i=0; i < storeObjects.length; i++){
   var storeContact = document.getElementById("store"+i);
 
   if(storeContact){       //need if statement for other web pages that do not have this element Id.
-  storeContact.textContent=storeObjects[i].storeName+" \r "+storeObjects[i].address+" \r "+storeObjects[i].phone+" \r "+storeObjects[i].storeHours+", "+storeObjects[i].days;
+  storeContact.textContent=storeObjects[i].storeName;
+
+  //+" \r "+storeObjects[i].address+" \r "+storeObjects[i].phone+" \r "+storeObjects[i].storeHours+", "+storeObjects[i].days;
 }
 }
 //ok, so that kind of worked :)  Still need to format and find out how to add carriage returns & list open time and close time separately wih a "-"

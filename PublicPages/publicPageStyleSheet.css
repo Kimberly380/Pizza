@@ -1,0 +1,126 @@
+body {
+font-family: "Audiowide";
+background-color: white;
+}
+
+.bannerImage{
+  width: 1024px;
+  height:auto;
+  position: fixed;
+  margin-top: 0px;
+  z-index:1;
+}
+
+header{
+  height: 250px;
+  width: 1090px;
+  background-color: #2f9aa5;
+  margin-top: -200px;
+  position:fixed;
+  z-index:0;
+}
+
+nav ul{
+  margin-top: 210px;
+  z-index: 999;
+}
+
+nav li{
+    display:inline;
+    color: #112444;
+    margin-top: 50px;
+        }
+
+nav li a{
+    text-decoration: none;
+    color: #112444;
+    margin-top: 500px;
+
+  }
+
+a:hover {
+  background-color:white;
+
+}
+
+#weeklyTotals, #putSummaryTableHere {
+  display: none;
+}
+#pizzasSold {
+  position:fixed;
+  margin-top: 335px;
+  font-size: 18px;
+  margin-left: 350px;
+  color: #112444;
+  font-weight: bold;
+
+}
+
+h2{
+  position: absolute;
+  margin-top: 400px;
+  margin-left: 410px;
+  color: #112444;
+}
+
+
+#store0 {
+  border: 2px solid black;
+  width: 125px;
+  height: 125px;
+  padding: 25px;
+  display: inline-block;
+  margin-top: 100px;
+  margin-left: 120px;
+  text-align:center;
+}
+#store1 {
+  border: 2px solid black;
+  width: 125px;
+  height: 125px;
+  padding: 25px;
+  display: inline-block;
+  margin-top: 100px;
+  margin-left: 150px;
+  text-align:center;
+  }
+#store2 {
+  border: 2px solid black;
+  width: 125px;
+  height: 125px;
+  padding: 25px;
+  display: inline-block;
+  margin-top: 100px;
+  margin-left: 150px;
+  text-align:center;
+  }
+#store3 {
+  border: 2px solid black;
+  width: 125px;
+  height: 125px;
+  padding: 25px;
+  display: inline-block;
+  margin-top: 800px;
+  margin-left: 120px;
+  text-align:center;
+  }
+#store4 {
+  border: 2px solid black;
+  width: 125px;
+  height: 125px;
+  padding: 25px;
+  display: inline-block;
+  margin-top: 800px;
+  margin-left: 120px;
+  text-align:center;
+  }
+#store5 {
+  border: 2px solid black;
+  width: 125px;
+  height: 125px;
+  padding: 25px;
+  display: inline-block;
+  margin-top: 800px;
+  margin-left: 0px;
+  text-align:center;
+  }
