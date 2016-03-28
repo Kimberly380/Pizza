@@ -1,0 +1,63 @@
+body {
+font-family: "Audiowide";
+background-color: white;
+}
+
+.bannerImage{
+  width: 1024px;
+  height:auto;
+  position: fixed;
+  margin-top: -20px;
+  z-index:1;
+}
+
+nav ul{
+  margin-top: 0px;
+  background-color: #2f9aa5;
+  padding-top: 25px;
+  padding-bottom:10px;
+  width:1050px;
+
+}
+
+nav li{
+    display:inline;
+    color: #112444;
+    margin-top: 50px;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+nav li a{
+    text-decoration: none;
+    color: #112444;
+  }
+
+a:hover {
+  background-color:white;
+
+}
+
+#weeklyTotals, #putSummaryTableHere {
+  display: none;
+}
+#pizzasSold {
+  position:fixed;
+  margin-top: 350px;
+  font-size: 18px;
+  margin-left: 350px;
+  color: #112444;
+  font-weight: bold;
+}
+
+h2{
+  position: absolute;
+  margin-top: 400px;
+  margin-left: 410px;
+  color: #112444;
+  z-index: 900;
+}
+
+#pizzasSold {
+  display: none;
+}
