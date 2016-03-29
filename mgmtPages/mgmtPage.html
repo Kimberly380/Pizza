@@ -3,12 +3,125 @@
 <head>
   <meta charset="utf-8"></meta>
   <title>Pizza 3001</title>
-    <link href="mgmtPageStyleSheet.css".css" type="text/css" rel="stylesheet" />
+    <link href="formStyleSheet.css" type="text/css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
 </head>
 
 
 
+
 <body>
+
+<h1>Pizza 3001</h1>
+  <nav>
+    <ul>
+      <li><a href="..\PublicPages\publicPage.html">HOME</a></li>
+      <li><a href="../PublicPages/contactPage.html">CONTACT </a></li>
+      <li><a href="mgmtPage.html">MANAGEMENT LOGIN</a></li>
+      <li><a href="form.html">UPDATE STORE INFO</a></li>
+    </ul>
+    <img id="rocket" src="..\Images\rocket.png" />
+  </nav>
+
+
+<p>What would you like to do?</p>
+    <input  type="radio", name = "storeUpdate" value ="Update" />  Update Existing Store <br/>
+    <input  type="radio", name = "storeUpdate" value ="Create" />  Create New Store <br/>
+    <input  type="radio", name = "storeUpdate" value ="Delete" />  Delete Existing Store
+
+<fieldset id="fieldSelector" >
+<div id=updateForm>
+  <legend>Update Existing Store</legend>
+      <p id=updatePrompt>Which store would you like to update?</p>
+        <select id ="selectStore">
+          <option>Select Store</option>
+        </select>
+
+      <p ></p>
+          <p class="userPrompt">Store Name:
+              <input id="storename" type="text" name="storeName" size="35"></input>
+          </p>
+          <p class="userPrompt">Store Address:
+              <input id="storeaddress" type="text" name="storeName" size="35"></input>
+          </p>
+          <p class="userPrompt">Store Phone:
+              <input id="storephone" type="text" name="storeName" size="35"></input>
+          </p>
+
+          <p class="hours">Open Time:
+            <select id ="openTime">
+              <option>Open Time</option>
+            </select>
+          </p>
+          <p  class="hours">Close Time:
+            <select id ="closeTime" >
+              <option>Close Time</option>
+            </select>
+          </p>
+
+          <p class="userPrompt">Days Open:
+            <input id="storehours" type="text" size="35" name="storeName"></input>
+          </p>
+          <p class="giveAlert">Please fill in all fields before continuing"</p>
+
+          <div id="updateButton" > <input type="submit" name="button" value="Update Store" /></div>
+          <div id="deleteButton"> <input type = "submit" name ="button" value ="DELETE Store" /></div>
+  </div>
+
+  <div id="addStoreForm">
+    <legend>Add New Store</legend>
+      <p>Complete the following add request:</p>
+            <p>Store Name:
+                <input id="newStoreName" type="text" name="storeNew" size="35"></input>
+            </p>
+            <p>Store Address:
+                <input id="newStoreAddress" type="text" name="storeNew" size="35"></input>
+            </p>
+            <p>Store Phone:
+                <input id="newStorePhone" type="text" name="storeNew" size="35"></input>
+            </p>
+            <p class="hours">Open Time:
+              <select id ="openTimeNew">
+                <option>Open Time</option>
+              </select>
+            </p>
+            <p  class="hours">Close Time:
+              <select id ="closeTimeNew" >
+                <option>Close Time</option>
+              </select>
+            </p>
+
+            <p class="userPrompt">Days Open:
+              <input id="newStoreDays" type="text" size="35" name="storeName"></input>
+            </p>
+
+            <p class="giveAlert">Please fill in all fields before continuing"</p>
+            <div id="addButton" > <input type="submit" name="button" value="Add New Store" />
+      </div>
+
+
+  </div>
+
+</fieldset>
+
+
+
+<div id= "putSummaryTableHere"></div>
+<p id="pizzasSold"></p>
+<div id="weeklyTotals"></div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- BELOW IS MANAMGEMENT PAGE -->
+
 
   <h1>Pizza 3001</h1>
     <nav>
@@ -20,8 +133,6 @@
       </ul>
     </nav>
 
-
-  <a id="linkHome" href="publicPage.html">Home</a>
 
   <div id="weeklyTotals"></div>
 

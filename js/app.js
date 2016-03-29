@@ -38,23 +38,8 @@ function Store (storeName, address, phone, openTime, closeTime, days, pData, dDa
     this.storeName = storeName;
     this.address = address;
     this.phone = phone;
-    this.storeHours =
-    function(open,closed){   //position in array above
-                      var open = hoursArrayStore[open]
-                      var closed =hoursArrayStore[closed];
-                      var hrsArray =[];
-                        for(i=open ; i< closed-open+1; i++){
-                          hrsArray += hoursArrayStore[i];
-                        }
-                        cosole.log(hrsArray);
-                      return  hrsArray;
-                    }
-
-    // function (openTime,closeTime){
-    //       var open = timeArray[openTime];
-    //       var closed = timeArray[closeTime];
-    //       return [open,closed];
-    //     };
+    this.openTime = openTime;
+    this.closeTime=closeTime;
     this.days = days;
     this.pData = pData;
     this.pSum = 0
@@ -410,27 +395,30 @@ var txtBxAddyNew = document.getElementById("newStoreAddress");
 var txtBxPhoneNew = document.getElementById("newStorePhone");
 var txtBxDaysNew = document.getElementById("newStoreDays");
 var addButton= document.getElementById("addButton");
+var giveAlert = document.getElementsByClassName("giveAlert");
 
 var addNewStore;
 
 function addNewStore (){
-      var a = txtBxNameNew.value;
-      var b = txtBxAddyNew.value;
-      var c = txtBxPhoneNew.value;
-      var d = openTime.value;
-      var e = closeTime.value;
-      var f = txtBxDaysNew.value;
+  var a = txtBxNameNew.value;
+  var b = txtBxAddyNew.value;
+  var c = txtBxPhoneNew.value;
+  var d = openTimeNew.value;
+  var e = closeTimeNew.value;
+  var f = txtBxDaysNew.value;
 
-      var verify = confirm ("Are you sure you want to add the following store?\nStore Name:  " +a +
-                              "\nStore Address:  "+b + " \nStore Phone:  "+c + "\n Store opens at:  "
-                            + d + "\nStore closes at:  "+e+ "\n Days store is Open:  " + f);
+
+  if(a===""){
+    giveAlert[1].style.display = "block";
+  }
+
+  var verify = confirm ("Are you sure you want to add the following store?\nStore Name:  " +a +
+                          "\nStore Address:  "+b + " \nStore Phone:  "+c + "\n Store opens at:  "
+                        + d + "\nStore closes at:  "+e+ "\n Days store is Open:  " + f);
 
   if(verify) {
-      allStoreData.push(addNewStore = new Store(a,b,c,d,e,f,[[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,6]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]));
-
-      console.log(storeObjects[storeObjects.length -1]);
+      new Store(a,b,c,d,e,f,[[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,6]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
     }
-
 }
     addButton.addEventListener("click", addNewStore, false);
 
@@ -471,16 +459,27 @@ if("selectStore"){
 if("openTime"|| "closeTime"){
     var openTime = document.getElementById("openTime");
     var closeTime = document.getElementById("closeTime");
+    var openTimeNew = document.getElementById("openTimeNew");
+    var closeTimeNew = document.getElementById("closeTimeNew");
+
 
     for (var h = 0; h < hoursArrayStore.length; h++){
           var optOpen = document.createElement("option");
           var optClose = document.createElement("option");
+          var optOpenNew = document.createElement("option");
+          var optCloseNew = document.createElement("option");
           var optOpenTxt = document.createTextNode(hoursArrayStore[h]);
           var optCloseTxt = document.createTextNode(hoursArrayStore[h]);
+
           optOpen.appendChild(optOpenTxt);
           optClose.appendChild(optCloseTxt);
+          optOpenNew.appendChild(optOpenTxt);
+          optCloseNew.appendChild(optCloseTxt);
           openTime.appendChild(optOpen);
           closeTime.appendChild(optClose);
+          openTimeNew.appendChild(optOpenNew);
+          closeTimeNew.appendChild(optCloseNew);
+
       }
     }
 

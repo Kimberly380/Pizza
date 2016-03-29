@@ -69,7 +69,7 @@ input[name=storeName],storeHours {
   font-size:18px;
 }
 
-#openTime, #closeTime{
+#openTime, #closeTime , #openTimeNew , #closeTimeNew{
   display:inline-block;
   background-color: #f2f2f2;
   color: black;
@@ -86,4 +86,28 @@ padding-left: 35px;
 #rocket {
   display: inline-block;
 
+}
+
+input[name=button] {
+  width=32px;
+  height = 32px;
+  font-size: 24px;
+  text-align: center;
+  border: none;
+  background-color: #2f9aa5;
+  color: white;
+  padding: 10px;
+  margin-top: 15px;
+  margin-left: 150px;
+  }
+
+input:hover[name=button]{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+p.alert{
+  display:none;
+  color: orange;
+  font-size: 14pt;
+  text-align: center;
 }
