@@ -396,8 +396,14 @@ var txtBxPhoneNew = document.getElementById("newStorePhone");
 var txtBxDaysNew = document.getElementById("newStoreDays");
 var addButton= document.getElementById("addButton");
 var giveAlert = document.getElementsByClassName("giveAlert");
-
 var addNewStore;
+
+
+
+function makeNewStoreTable(){
+      storeObjects[storeObjects.length -1].tableGen()
+}
+
 
 function addNewStore (){
   var a = txtBxNameNew.value;
@@ -417,7 +423,9 @@ function addNewStore (){
                         + d + "\nStore closes at:  "+e+ "\n Days store is Open:  " + f);
 
   if(verify) {
-      new Store(a,b,c,d,e,f,[[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,6]],[[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+      new Store(a,b,c,d,e,f,[[0,4],[0,4],[0,4],[0,7],[0,7],[0,7],[2,15],[2,15],[2,15],[15,35],[15,35],[15,35],[12,31],[12,31],[12,31],[5,20],[5,20],[5,20]],[[0,4],[0,6],[0,4],[0,4],[0,4],[0,4],[0,4],[0,4],[1,4],[1,4],[1,4],[3,8],[3,8],[3,8],[5,12],[5,12],[5,12],[6,11],[6,11],[6,11]]);
+      makeNewStoreTable();
+  
     }
 }
     addButton.addEventListener("click", addNewStore, false);
